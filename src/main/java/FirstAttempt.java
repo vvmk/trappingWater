@@ -6,12 +6,12 @@ import java.util.Arrays;
  * author: https://github.com/vvmk
  * date: 3/7/18
  */
-public class solution {
+public class FirstAttempt {
 
     // only works if simple cup shape
-    private static int trapWater(int[] input) {
+    private static long trapWater(int[] input) {
         int upperBound = (input[0] < input[input.length - 1]) ? input[0] : input[input.length - 1];
-        int sum = 0;
+        long sum = 0;
         for (int i = 1; i < input.length - 1; i++) {
             sum += (upperBound - input[i]);
         }
@@ -19,8 +19,8 @@ public class solution {
     }
 
     //should cover everything
-    public static int trapMoreWater(int[] input) {
-        int sum = 0;
+    public static long trapMoreWater(int[] input) {
+        long sum = 0;
         int leftWall = 0;
         int possibleWall = 0;
         for (int i = 1; i < input.length; i++) {
