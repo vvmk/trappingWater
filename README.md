@@ -1,7 +1,9 @@
-algorithm demonstration 3/7
 
-First method is kinda brute force, so I tried it again with a stack. One of them has a bug somewhere at ~900+ entries they start to slowly desync.
+### Trapping Water
 
+My first attempt is pretty brute-force, so I tried a second time using a stack. One of them has a bug somewhere, at ~900+ entries they start to slowly desync.
+
+* bug data, for later
 //STACK VS BRUTE FORCE TESTS: Random(69).nextInt(11);
     // len : total: 
     // 900 : 4538 : MATCH
