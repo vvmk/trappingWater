@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * filename:
  * project: trappingwater
@@ -5,18 +7,37 @@
  * date: 3/7/18
  */
 public class solution {
-    public static void main(String[] args) {
-        int[] input = {3, 0, 0, 2, 0, 4};
-        System.out.println(trapWater(input));
-    }
 
+    // only works if simple cup shape
     private static int trapWater(int[] input) {
-        int upperBound = (input[0] < input.length) ? input[0] : input[input.length - 1];
+        int upperBound = (input[0] < input[input.length - 1]) ? input[0] : input[input.length - 1];
         int sum = 0;
         for (int i = 1; i < input.length - 1; i++) {
-            int height = (input[i] > upperBound) ? upperBound : input[i];
-            sum += upperBound - height;
+            sum += (upperBound - input[i]);
         }
+        return sum;
+    }
+
+    //should cover everything
+    public static int trapMoreWater(int[] input) {
+        int sum = 0;
+        int leftWall = 0;
+        int possibleWall = 0;
+        for (int i = 1; i < input.length; i++) {
+
+            if (input[i] > input[i - 1]) { // went up
+                possibleWall = i;
+
+                if (input[i] >= input[leftWall]) { // trap it
+                    sum += trapWater(Arrays.copyOfRange(input, leftWall, i + 1));
+                    leftWall = i;
+                }
+            }
+        }
+
+        if (possibleWall > leftWall) // catch the last bucket
+            sum += trapWater(Arrays.copyOfRange(input, leftWall, possibleWall + 1));
+
         return sum;
     }
 }
